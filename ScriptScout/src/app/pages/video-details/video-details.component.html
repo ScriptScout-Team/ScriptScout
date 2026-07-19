@@ -1,1 +1,201 @@
 <p>video-details works!</p>
+<div class="video-details-container">
+
+  <!-- Video Section -->
+  <div class="video-section">
+
+    <video controls poster="assets/images/video-thumbnail.jpg">
+      <source src="assets/videos/sample.mp4" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+
+    <div class="video-info">
+
+      <h2>{{video.title}}</h2>
+
+      <div class="video-meta">
+
+        <span><i class="fa fa-folder"></i> {{video.category}}</span>
+
+        <span><i class="fa fa-clock"></i> {{video.duration}}</span>
+
+        <span><i class="fa fa-calendar"></i> {{video.uploadDate}}</span>
+
+        <span class="status">
+          {{video.status}}
+        </span>
+
+      </div>
+
+      <div class="description">
+        <h3>Description</h3>
+        <p>{{video.description}}</p>
+      </div>
+
+    </div>
+
+  </div>
+
+
+
+  <!-- Tabs -->
+
+  <div class="tabs">
+
+      <button
+      [class.active]="selectedTab=='chapters'"
+      (click)="selectTab('chapters')">
+      Chapters
+      </button>
+
+      <button
+      [class.active]="selectedTab=='transcript'"
+      (click)="selectTab('transcript')">
+      Transcript
+      </button>
+
+      <button
+      [class.active]="selectedTab=='details'"
+      (click)="selectTab('details')">
+      Details
+      </button>
+
+  </div>
+
+
+
+  <!-- Chapters -->
+
+  <div *ngIf="selectedTab=='chapters'" class="tab-content">
+
+      <div class="chapter-card"
+      *ngFor="let chapter of chapters">
+
+          <div class="chapter-time">
+
+              {{chapter.time}}
+
+          </div>
+
+          <div class="chapter-info">
+
+              <h4>{{chapter.title}}</h4>
+
+              <p>{{chapter.description}}</p>
+
+          </div>
+
+      </div>
+
+  </div>
+
+
+
+  <!-- Transcript -->
+
+  <div *ngIf="selectedTab=='transcript'" class="tab-content">
+
+      <div class="transcript-box">
+
+          <div
+          *ngFor="let transcript of transcripts"
+          class="transcript-item">
+
+              <span class="time">
+                  {{transcript.time}}
+              </span>
+
+              <p>{{transcript.text}}</p>
+
+          </div>
+
+      </div>
+
+  </div>
+
+
+
+
+  <!-- Details -->
+
+  <div *ngIf="selectedTab=='details'" class="tab-content">
+
+      <div class="details-grid">
+
+          <div class="detail-card">
+
+              <h4>Language</h4>
+
+              <p>{{video.language}}</p>
+
+          </div>
+
+          <div class="detail-card">
+
+              <h4>Resolution</h4>
+
+              <p>{{video.resolution}}</p>
+
+          </div>
+
+          <div class="detail-card">
+
+              <h4>Size</h4>
+
+              <p>{{video.size}}</p>
+
+          </div>
+
+          <div class="detail-card">
+
+              <h4>Uploaded By</h4>
+
+              <p>{{video.uploadedBy}}</p>
+
+          </div>
+
+      </div>
+
+  </div>
+
+
+
+  <!-- AI Metadata -->
+
+  <div class="metadata">
+
+      <h3>AI Generated Metadata</h3>
+
+      <div class="tags">
+
+          <span *ngFor="let tag of video.tags">
+
+              {{tag}}
+
+          </span>
+
+      </div>
+
+  </div>
+
+
+
+  <!-- Action Buttons -->
+
+  <div class="buttons">
+
+      <button class="edit-btn">
+
+          Edit Metadata
+
+      </button>
+
+      <button class="download-btn">
+
+          Download Transcript
+
+      </button>
+
+  </div>
+
+</div>

@@ -1,0 +1,134 @@
+<div class="catalog-page">
+
+
+  <!-- Main Content -->
+
+  <div class="main-content">
+
+    <div class="header">
+
+      <div>
+        <h2>Search & Catalog</h2>
+        <p>Search and manage all uploaded videos.</p>
+      </div>
+
+    </div>
+
+    <!-- Search Filters -->
+
+    <div class="search-card">
+
+      <div class="filters">
+
+        <input
+          type="text"
+          placeholder="Search by title..."
+          [(ngModel)]="searchText">
+
+        <select [(ngModel)]="selectedCategory">
+          <option value="">All Categories</option>
+          <option>Technology</option>
+          <option>Education</option>
+          <option>Healthcare</option>
+        </select>
+
+        <select [(ngModel)]="selectedLanguage">
+          <option value="">All Languages</option>
+          <option>English</option>
+          <option>Telugu</option>
+          <option>Hindi</option>
+        </select>
+
+        <button
+          class="search-btn"
+          (click)="searchVideos()">
+
+          Search
+
+        </button>
+
+        <button
+          class="reset-btn"
+          (click)="resetFilters()">
+
+          Reset
+
+        </button>
+
+      </div>
+
+    </div>
+
+    <!-- Table -->
+
+    <div class="table-card">
+
+      <table>
+
+        <thead>
+
+          <tr>
+            <th>Thumbnail</th>
+            <th>Video Title</th>
+            <th>Category</th>
+            <th>Language</th>
+            <th>Duration</th>
+            <th>Status</th>
+            <th>Actions</th>
+          </tr>
+
+        </thead>
+
+        <tbody>
+
+          <tr *ngFor="let video of videos">
+
+            <td>
+
+              <img
+                [src]="video.thumbnail"
+                class="thumb">
+
+            </td>
+
+            <td>{{video.title}}</td>
+
+            <td>{{video.category}}</td>
+
+            <td>{{video.language}}</td>
+
+            <td>{{video.duration}}</td>
+
+            <td>
+
+              <span class="status">
+
+                {{video.status}}
+
+              </span>
+
+            </td>
+
+            <td>
+
+              <button
+                class="view-btn"
+                (click)="viewVideo(video)">
+
+                View
+
+              </button>
+
+            </td>
+
+          </tr>
+
+        </tbody>
+
+      </table>
+
+    </div>
+
+  </div>
+
+</div>

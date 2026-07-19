@@ -1,0 +1,173 @@
+<div class="media-library">
+
+  <!-- Header -->
+  <div class="page-header">
+    <h2>Media Library</h2>
+
+    <button class="upload-btn" routerLink="/upload">
+      + Upload Video
+    </button>
+  </div>
+
+  <!-- Search & Filter -->
+
+  <div class="toolbar">
+
+    <div class="search-box">
+      <input
+        type="text"
+        placeholder="Search videos..."
+        [(ngModel)]="searchText"
+        (input)="searchVideos()">
+    </div>
+
+    <select
+      [(ngModel)]="selectedStatus"
+      (change)="filterVideos()">
+
+      <option value="All">All Status</option>
+      <option value="Completed">Completed</option>
+      <option value="Processing">Processing</option>
+      <option value="Failed">Failed</option>
+
+    </select>
+
+  </div>
+
+  <!-- Table -->
+
+  <div class="table-card">
+
+    <table>
+
+      <thead>
+
+      <tr>
+
+        <th>Thumbnail</th>
+
+        <th>Title</th>
+
+        <th>Category</th>
+
+        <th>Duration</th>
+
+        <th>Status</th>
+
+        <th>Uploaded</th>
+
+        <th>Actions</th>
+
+      </tr>
+
+      </thead>
+
+      <tbody>
+
+      <tr *ngFor="let video of filteredVideos">
+
+        <td>
+
+          <img
+            [src]="video.thumbnail"
+            class="thumbnail">
+
+        </td>
+
+        <td>
+
+          <div class="title">
+
+            {{video.title}}
+
+          </div>
+
+        </td>
+
+        <td>
+
+          {{video.category}}
+
+        </td>
+
+        <td>
+
+          {{video.duration}}
+
+        </td>
+
+        <td>
+
+          <span
+            class="status"
+            [ngClass]="{
+
+            completed:video.status==='Completed',
+
+            processing:video.status==='Processing',
+
+            failed:video.status==='Failed'
+
+            }">
+
+            {{video.status}}
+
+          </span>
+
+        </td>
+
+        <td>
+
+          {{video.uploaded}}
+
+        </td>
+
+        <td>
+
+          <div class="actions">
+
+            <button
+            class="view-btn"
+            [routerLink]="['/video-player',video.id]">
+
+            View
+
+            </button>
+
+            <button
+            class="edit-btn"
+            [routerLink]="['/metadata-editor',video.id]">
+
+            Metadata
+
+            </button>
+
+            <button
+            class="delete-btn"
+            (click)="deleteVideo(video.id)">
+
+            Delete
+
+            </button>
+
+          </div>
+
+        </td>
+
+      </tr>
+
+      </tbody>
+
+    </table>
+
+    <div
+      *ngIf="filteredVideos.length===0"
+      class="empty">
+
+      No Videos Found
+
+    </div>
+
+  </div>
+
+</div>

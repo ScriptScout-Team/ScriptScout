@@ -1,0 +1,219 @@
+.sidebar{
+
+    position:fixed;
+
+    top:0;
+
+    left:0;
+
+    width:267px;
+
+    height:100vh;
+
+    background:#1E1B4B;
+
+    color:#fff;
+
+    display:flex;
+
+    flex-direction:column;
+
+    overflow: hidden;
+
+    justify-content:space-between;
+
+    padding:24px 18px;
+
+    box-shadow:4px 0 20px rgba(0,0,0,.12);
+
+}
+
+/* =======================
+   Logo
+======================= */
+
+.logo{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:14px;
+
+    margin-bottom:35px;
+
+}
+
+.logo-icon{
+
+    width:50px;
+
+    height:50px;
+
+    border-radius:14px;
+
+    background:linear-gradient(135deg,#6C4BFF,#8B5CF6);
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    font-weight:700;
+
+    font-size:18px;
+
+}
+
+.logo-text h2{
+
+    font-size:20px;
+
+    margin:0;
+
+}
+
+.logo-text span{
+
+    color:#C7C7F7;
+
+    font-size:12px;
+
+}
+.logout-btn{
+
+    width:100%;
+
+    display:flex;
+
+    align-items:center;
+
+    gap:14px;
+
+    padding:14px 16px;
+
+    background:transparent;
+
+    color:#D8D8FF;
+
+    border:none;
+
+    border-radius:12px;
+
+    cursor:pointer;
+
+    font-size:15px;
+
+    transition:.3s;
+
+}
+.logout-btn:hover{
+
+    background:#EF4444;
+
+    color:white;
+
+}
+
+/* =======================
+   Menu
+======================= */
+
+.menu{
+
+    list-style:none;
+
+    padding:0;
+
+    margin:0;
+
+}
+
+.menu li{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:14px;
+
+    padding:10px 14px;
+
+    margin-bottom:3px;
+     min-height:42px;
+
+    border-radius:12px;
+
+    cursor:pointer;
+
+    transition:.3s;
+
+    font-size:15px;
+
+    color:#D8D8FF;
+
+}
+
+.menu li:hover{
+
+    background:rgba(255,255,255,.08);
+
+    color:#fff;
+
+}
+
+.menu li.active{
+
+    background:#6C4BFF;
+
+    color:#fff;
+
+}
+
+.menu li span{
+
+    width:22px;
+
+    text-align:center;
+
+}
+
+/* =======================
+   Bottom
+======================= */
+.bottom-menu{
+
+    margin-top:auto;
+
+    padding-top:10px;
+
+    border-top:1px solid rgba(255,255,255,.12);
+
+}
+
+.bottom-menu li{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:14px;
+
+    list-style:none;
+
+    padding:14px 16px;
+
+    border-radius:12px;
+
+    cursor:pointer;
+
+    transition:.3s;
+
+}
+
+.bottom-menu li:hover{
+
+    background:#EF4444;
+
+}

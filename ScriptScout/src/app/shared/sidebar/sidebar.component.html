@@ -1,1 +1,52 @@
-<p>sidebar works!</p>
+<div class="sidebar">
+  <!-- Logo -->
+
+  <div class="logo">
+    <div class="logo-icon">SS</div>
+
+    <div class="logo-text">
+      <h2>ScriptScout</h2>
+      <span>AI Metadata</span>
+    </div>
+  </div>
+
+  <!-- Menu -->
+
+<ul class="menu">
+
+    <li routerLink="/dashboard" routerLinkActive="active">
+        <span>📊</span>
+        Dashboard
+    </li>
+
+    <li routerLink="/media-library" routerLinkActive="active">
+        <span>🎬</span>
+        Media Library
+    </li>
+
+    <li routerLink="/upload" routerLinkActive="active">
+        <span>⬆️</span>
+        Upload Video
+    </li>
+
+   <li routerLink="/processing-queue" routerLinkActive="active">
+    <span>⚙️</span>
+    Processing Queue
+</li>
+
+</ul>
+
+<div class="bottom-menu">
+
+    <li routerLink="/settings" routerLinkActive="active">
+    <i class="fas fa-cog">⚙️</i>
+    Settings
+</li>
+
+    <button class="logout-btn" (click)="logout()">
+    <span>🚪</span>
+    Logout
+</button>
+
+</div>
+</div>

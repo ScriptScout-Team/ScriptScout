@@ -1,0 +1,220 @@
+<app-sidebar></app-sidebar>
+
+<div class="dashboard-content">
+
+  <app-navbar></app-navbar>
+
+  <div class="main">
+
+    <!-- Header -->
+       <div class="content-wrapper">
+
+        <!-- Header -->
+        <div class="header">
+
+            <div class="left">
+
+                <a
+                    class="back"
+                    [routerLink]="['/video-player',1]">
+                    ← Back to Video
+                </a>
+
+                <h2>{{ metadata.title }}</h2>
+
+            </div>
+
+            <button
+                class="ai-btn"
+                (click)="regenerateMetadata()">
+
+                ✨ AI Regenerate
+
+            </button>
+
+        </div>
+
+    <!-- Form Card -->
+
+    <div class="card">
+
+      <h3>Metadata Editor</h3>
+
+      <div class="row">
+
+        <div class="form-group">
+
+          <label>Title *</label>
+
+          <input
+            type="text"
+            [(ngModel)]="metadata.title">
+
+        </div>
+
+        <div class="form-group">
+
+          <label>Category *</label>
+
+          <select [(ngModel)]="metadata.category">
+
+            <option>Technology</option>
+            <option>Education</option>
+            <option>Health</option>
+
+          </select>
+
+        </div>
+
+      </div>
+
+      <div class="row">
+
+        <div class="form-group">
+
+          <label>Sub Category</label>
+
+          <input
+            type="text"
+            [(ngModel)]="metadata.subCategory">
+
+        </div>
+
+        <div class="form-group">
+
+          <label>Video Category</label>
+
+          <select [(ngModel)]="metadata.videoCategory">
+
+            <option>English</option>
+            <option>Medical</option>
+            <option>Science</option>
+
+          </select>
+
+        </div>
+
+      </div>
+
+      <div class="form-group">
+
+        <label>Description</label>
+
+        <textarea
+          rows="6"
+          [(ngModel)]="metadata.description">
+        </textarea>
+
+      </div>
+
+      <div class="row">
+
+        <div class="form-group">
+
+          <label>Language</label>
+
+          <select [(ngModel)]="metadata.language">
+
+            <option>English</option>
+            <option>Hindi</option>
+            <option>Telugu</option>
+
+          </select>
+
+        </div>
+
+        <div class="form-group">
+
+          <label>Age Rating</label>
+
+          <select [(ngModel)]="metadata.rating">
+
+            <option>PG</option>
+            <option>U</option>
+            <option>18+</option>
+
+          </select>
+
+        </div>
+
+      </div>
+
+      <div class="form-group">
+
+        <label>Tags / Keywords</label>
+
+        <div class="tags">
+
+          <span
+            *ngFor="let tag of metadata.tags; let i=index">
+
+            {{ tag }}
+
+            <button
+              type="button"
+              class="remove-tag"
+              (click)="removeKeyword(i)">
+
+              ×
+
+            </button>
+
+          </span>
+
+          <button
+            type="button"
+            class="add-btn"
+            (click)="addKeyword()">
+
+            + Add Keyword
+
+          </button>
+
+        </div>
+
+      </div>
+
+      <div class="row">
+
+        <div class="form-group">
+
+          <label>Visibility</label>
+
+          <select [(ngModel)]="metadata.visibility">
+
+            <option>Public</option>
+            <option>Private</option>
+
+          </select>
+
+        </div>
+
+      </div>
+
+      <div class="buttons">
+
+        <button
+          class="reset-btn"
+          type="button"
+          (click)="resetForm()">
+
+          Reset
+
+        </button>
+
+        <button
+          class="save-btn"
+          type="button"
+          (click)="saveMetadata()">
+
+          Save Metadata
+
+        </button>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</div>

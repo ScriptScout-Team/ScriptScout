@@ -1,0 +1,29 @@
+<div class="signup-container">
+  <div class="signup-card">
+    <h1>ScriptScout</h1>
+
+    <h2>Create Account</h2>
+
+    <input type="text" placeholder="Full Name" [(ngModel)]="fullName" />
+
+    <input type="email" placeholder="Email" [(ngModel)]="email" />
+
+    <input type="text" placeholder="Phone Number" [(ngModel)]="phone" />
+
+    <input type="password" placeholder="Password" [(ngModel)]="password" />
+
+    <input
+      type="password"
+      placeholder="Confirm Password"
+      [(ngModel)]="confirmPassword"
+    />
+
+    <button (click)="register()">Register</button>
+
+    <p>
+      Already have an account?
+
+      <a routerLink="/login"> Login </a>
+    </p>
+  </div>
+</div>

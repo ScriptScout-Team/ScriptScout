@@ -1,71 +1,549 @@
-.upload-container{
+/* ===========================================
+   Upload Page - Part 1
+   ScriptScout Upload UI
+=========================================== */
 
-    width:600px;
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
 
-    margin:40px auto;
-
-    background:white;
+.upload-page{
+    width:100%;
+    min-height:100vh;
+    background:#f6f7fc;
 
     padding:30px;
 
-    border-radius:10px;
+    /* Add this */
+    padding-top:70px;
+}
 
-    box-shadow:0 0 10px gray;
+/* ===========================================
+   Header
+=========================================== */
+
+.page-header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:25px;
+}
+
+.page-header h2{
+    font-size:28px;
+    font-weight:700;
+    color:#222;
+    margin-bottom:6px;
+}
+
+.page-header p{
+    color:#777;
+    font-size:14px;
+}
+
+/* ===========================================
+   Upload Card
+=========================================== */
+
+.upload-card{
+    background:#ffffff;
+    border-radius:18px;
+    padding:30px;
+    box-shadow:0 12px 35px rgba(0,0,0,.08);
+}
+
+/* ===========================================
+   Upload Box
+=========================================== */
+
+.upload-box{
+
+    border:2px dashed #E2D9FF;
+
+    background:#FCFBFF;
+
+    border-radius:20px;
+
+    padding:45px;
+
+    transition:.35s;
 
 }
 
-h1{
+.upload-box:hover{
 
-    text-align:center;
+    border-color:#6C4BFF;
 
-    margin-bottom:30px;
+    background:#F8F6FF;
+
+}
+.upload-box:hover .upload-icon{
+
+    transform:scale(1.08);
+
+    transition:.3s;
+
+}
+/* ===========================================
+   Upload Icon
+=========================================== */
+
+.upload-icon{
+
+    width:95px;
+
+    height:95px;
+
+    border-radius:50%;
+
+    background:#F1ECFF;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    margin-bottom:25px;
+
+}
+/* ===========================================
+   Upload Text
+=========================================== */
+
+.upload-box h3{
+
+    font-size:20px;
+
+    color:#2c2c2c;
+
+    margin-bottom:10px;
 
 }
 
-.form-group{
+.upload-box p{
 
-    margin-bottom:20px;
+    color:#888;
+
+    margin-bottom:18px;
 
 }
 
-label{
+/* ===========================================
+   Browse Button
+=========================================== */
+
+.browse-btn{
+
+    background:#fff;
+
+    color:#6C4BFF;
+
+    border:2px solid #D8CCFF;
+
+    box-shadow:none;
+
+    transition:.3s;
+
+}
+
+.browse-btn:hover{
+
+    background:#6C4BFF;
+
+    color:#fff;
+
+}
+
+/* ===========================================
+   Supported Formats
+=========================================== */
+
+.supported{
+
+    color:#8b8b8b;
+
+    font-size:13px;
+
+}
+
+/* ===========================================
+   Selected File Card
+=========================================== */
+
+.selected-file{
+
+    margin-top:28px;
+
+    border-radius:15px;
+
+    background:#FAFAFF;
+
+    border:1px solid #ECE9FF;
+
+    padding:18px 20px;
+
+}
+
+.selected-file strong{
 
     display:block;
 
-    margin-bottom:8px;
+    color:#333;
 
-    font-weight:bold;
-
-}
-
-input,
-textarea,
-select{
-
-    width:100%;
-
-    padding:10px;
-
-    border:1px solid gray;
-
-    border-radius:5px;
+    margin-bottom:5px;
 
 }
 
-button{
+.selected-file small{
 
-    width:100%;
+    color:#888;
 
-    padding:12px;
+    font-size:13px;
 
-    background:#0066cc;
+}
 
-    color:white;
+/* ===========================================
+   Remove Button
+=========================================== */
+
+.remove-btn{
+
+    width:36px;
+
+    height:36px;
 
     border:none;
 
-    border-radius:5px;
+    border-radius:50%;
+
+    background:#ffebee;
+
+    color:#e53935;
+
+    font-size:18px;
 
     cursor:pointer;
+
+    transition:.3s;
+
+}
+
+.remove-btn:hover{
+
+    background:#e53935;
+
+    color:#fff;
+
+}
+/* ===========================================
+   Section Title
+=========================================== */
+
+.section-title{
+    margin-top:35px;
+    margin-bottom:20px;
+    font-size:18px;
+    font-weight:600;
+    color:#222;
+    position:relative;
+}
+
+.section-title::after{
+    content:'';
+    display:block;
+    width:55px;
+    height:3px;
+    background:#6c4bff;
+    border-radius:10px;
+    margin-top:8px;
+}
+
+/* ===========================================
+   Form Grid
+=========================================== */
+
+.form-grid{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:22px;
+}
+
+.form-group{
+    display:flex;
+    flex-direction:column;
+}
+
+.form-group.full{
+    grid-column:1/3;
+}
+
+.form-group label{
+    font-size:14px;
+    font-weight:600;
+    color:#444;
+    margin-bottom:8px;
+}
+
+/* ===========================================
+   Inputs
+=========================================== */
+
+.form-group input,
+.form-group select,
+.form-group textarea{
+
+    background:#fff;
+
+    border:1px solid #E9EAF2;
+
+    border-radius:12px;
+
+}
+
+.form-group input{
+
+    height:50px;
+
+}
+
+.form-group select{
+
+    height:50px;
+
+    cursor:pointer;
+
+}
+
+.form-group textarea{
+
+    min-height:120px;
+
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus{
+
+    border-color:#6c4bff;
+
+    box-shadow:0 0 0 4px rgba(108,75,255,.12);
+
+    background:#fff;
+
+}
+
+.form-group input::placeholder,
+.form-group textarea::placeholder{
+
+    color:#9ca3af;
+
+}
+
+/* ===========================================
+   Buttons
+=========================================== */
+
+.actions{
+
+    display:flex;
+
+    justify-content:flex-end;
+
+    gap:15px;
+
+    margin-top:35px;
+
+}
+
+.reset-btn{
+
+    height:46px;
+
+    padding:0 28px;
+
+}
+.reset-btn:hover{
+
+    background:#f3f4f8;
+
+}
+
+.upload-btn{
+
+    padding:0 30px;
+
+    height:46px;
+
+    border-radius:10px;
+
+}
+
+.upload-btn:hover{
+
+    transform:translateY(-2px);
+
+    box-shadow:0 18px 30px rgba(92,59,254,.35);
+
+}
+
+.upload-btn:active{
+
+    transform:scale(.98);
+
+}
+
+/* ===========================================
+   Card Animation
+=========================================== */
+
+.upload-card{
+
+    border-radius:22px;
+
+    box-shadow:
+
+    0 10px 40px rgba(31,41,55,.08);
+
+}
+@keyframes fadeIn{
+
+    from{
+
+        opacity:0;
+
+        transform:translateY(25px);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:translateY(0);
+
+    }
+
+}
+
+/* ===========================================
+   Responsive
+=========================================== */
+
+@media(max-width:992px){
+
+    .upload-page{
+
+        padding:20px;
+
+    }
+
+    .upload-card{
+
+        padding:25px;
+
+    }
+
+    .form-grid{
+
+        grid-template-columns:1fr;
+
+    }
+
+    .form-group.full{
+
+        grid-column:auto;
+
+    }
+
+}
+
+@media(max-width:768px){
+
+    .upload-box{
+
+        min-height:220px;
+
+        padding:20px;
+
+    }
+
+    .upload-icon{
+
+        width:60px;
+
+        height:60px;
+
+        font-size:28px;
+
+    }
+
+    .upload-box h3{
+
+        font-size:18px;
+
+    }
+
+    .actions{
+
+        flex-direction:column;
+
+    }
+
+    .reset-btn,
+    .upload-btn{
+
+        width:100%;
+
+    }
+
+}
+
+@media(max-width:576px){
+
+    .upload-page{
+
+        padding:15px;
+
+    }
+
+    .upload-card{
+
+        border-radius:15px;
+
+        padding:20px;
+
+    }
+
+    .page-header h2{
+
+         font-size:30px;
+
+    color:#232323;
+
+    }
+
+    .page-header p{
+
+        margin-top:8px;
+
+    color:#7B7B8A;
+
+    }
+
+    .upload-box{
+
+        min-height:200px;
+
+    }
+
+    .section-title{
+
+        font-size:17px;
+
+    }
 
 }

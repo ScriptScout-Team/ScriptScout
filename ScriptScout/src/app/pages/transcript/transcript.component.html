@@ -1,0 +1,76 @@
+<div class="transcript-page">
+
+  <div class="page-header">
+
+    <div>
+      <button
+        class="back-btn"
+        [routerLink]="['/video-player', videoId]">
+        ← Back to Video
+      </button>
+
+      <h2>{{ videoTitle }}</h2>
+    </div>
+
+    <button
+      class="download-btn"
+      (click)="downloadTranscript()">
+      Download Transcript
+    </button>
+
+  </div>
+
+  <div class="content-card">
+
+    <div class="tabs">
+
+      <button
+        class="tab"
+        [class.active]="activeTab === 'transcript'"
+        (click)="changeTab('transcript')">
+        Transcript
+      </button>
+
+      <button
+        class="tab"
+        [class.active]="activeTab === 'speakers'"
+        (click)="changeTab('speakers')">
+        Speakers
+      </button>
+
+    </div>
+
+    <div class="search-box">
+
+      <input
+        type="text"
+        [(ngModel)]="searchText"
+        placeholder="Search transcript..." />
+
+    </div>
+
+    <div class="transcript-list">
+
+      <div
+        class="row"
+        *ngFor="let item of filteredTranscripts">
+
+        <div class="time">
+          {{ item.time }}
+        </div>
+
+        <div class="speaker">
+          {{ item.speaker }}
+        </div>
+
+        <div class="text">
+          {{ item.text }}
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</div>

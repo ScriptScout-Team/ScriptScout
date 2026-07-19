@@ -1,0 +1,144 @@
+<app-sidebar></app-sidebar>
+
+<div class="dashboard-content">
+
+    <app-navbar></app-navbar>
+
+    <div class="main-content">
+
+        <!-- Header -->
+
+        <div class="top-bar">
+
+            <div>
+
+                <a
+                    class="back-link"
+                    routerLink="/transcript">
+
+                    ← Back to Transcript
+
+                </a>
+
+                <h2>Chapter Breakdown</h2>
+
+                <p>
+                    Automatically generated chapters for the selected video.
+                </p>
+
+            </div>
+
+            <button
+                class="generate-btn"
+                (click)="generateChapters()">
+
+                ✨ AI Generate Chapters
+
+            </button>
+
+        </div>
+
+        <!-- Chapter Card -->
+
+        <div class="chapter-card">
+
+            <div class="card-header">
+
+                <h3>Video Chapters</h3>
+
+                <button
+                    class="add-btn"
+                    (click)="addChapter()">
+
+                    + Add Chapter
+
+                </button>
+
+            </div>
+
+            <table>
+
+                <thead>
+
+                    <tr>
+
+                        <th>#</th>
+                        <th>Start</th>
+                        <th>End</th>
+                        <th>Chapter Title</th>
+                        <th>Actions</th>
+
+                    </tr>
+
+                </thead>
+
+                <tbody>
+
+                    <tr *ngFor="let chapter of chapters; let i = index">
+
+                        <td>{{ i + 1 }}</td>
+
+                        <td>
+
+                            <input
+                                [(ngModel)]="chapter.start">
+
+                        </td>
+
+                        <td>
+
+                            <input
+                                [(ngModel)]="chapter.end">
+
+                        </td>
+
+                        <td>
+
+                            <input
+                                [(ngModel)]="chapter.title">
+
+                        </td>
+
+                        <td>
+
+                            <button
+                                class="delete-btn"
+                                (click)="deleteChapter(i)">
+
+                                Delete
+
+                            </button>
+
+                        </td>
+
+                    </tr>
+
+                </tbody>
+
+            </table>
+
+            <div class="footer-buttons">
+
+                <button
+                    class="reset-btn"
+                    (click)="resetChapters()">
+
+                    Reset
+
+                </button>
+
+                <button
+                    class="save-btn"
+                    (click)="saveChapters()">
+
+                    Save Chapters
+
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>

@@ -1,0 +1,211 @@
+:host {
+  display: block;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;
+}
+
+/* Dashboard Layout */
+.dashboard-content{
+    
+    min-height:100vh;
+    background:#f5f7fb;
+}
+/* Main Content */
+.main{
+    padding-top:110px;
+    margin:30px auto;
+    padding:30px;
+    padding-bottom:40px;
+}
+/* Header */
+.header{
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-start;
+    margin-bottom:35px;
+}
+.left{
+    display:flex;
+    flex-direction:column;
+}
+.back{
+    color:#6d4cff;
+    font-size:15px;
+    text-decoration:none;
+    display:inline-block;
+    margin-bottom:12px;
+}
+.back:hover{
+    text-decoration:underline;
+}
+.header h2{
+    font-size:44px;
+    font-weight:700;
+    color:#222;
+    margin:0;
+}
+.ai-btn{
+    background:linear-gradient(135deg,#7c4dff,#5b39f7);
+    color:white;
+    border:none;
+    padding:14px 24px;
+    border-radius:12px;
+    font-weight:600;
+    cursor:pointer;
+    box-shadow:0 8px 20px rgba(91,57,247,.25);
+    font-size:15px;
+}
+.ai-btn:hover{
+    background:#5b39f7;
+}
+/* Card */
+.card{
+    background:white;
+    border-radius:24px;
+    padding:40px;
+    box-shadow:0 10px 35px rgba(0,0,0,.08);
+}
+.card h3{
+    font-size:30px;
+    margin:0 0 30px;
+    font-weight:700;
+}
+/* Form */
+.row{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:24px;
+    margin-bottom:25px;
+}
+.form-group{
+    display:flex;
+    flex-direction:column;
+}
+.form-group label{
+    font-size:15px;
+    font-weight:600;
+    margin-bottom:10px;
+}
+.form-group input,
+.form-group select{
+    height:56px;
+    border-radius:12px;
+    border:1px solid #ddd;
+    padding:0 18px;
+    font-size:16px;
+    font-family:inherit;
+    background:#fff;
+    color:#222;
+}
+.form-group textarea{
+    min-height:180px;
+    border-radius:12px;
+    border:1px solid #ddd;
+    padding:18px;
+    font-size:16px;
+    font-family:inherit;
+    resize:vertical;
+}
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus{
+    outline:none;
+    border-color:#6d4cff;
+    box-shadow:0 0 0 4px rgba(109,76,255,.12);
+}
+/* Tags */
+.tags{
+    margin-top:12px;
+    display:flex;
+    flex-wrap:wrap;
+    gap:12px;
+    align-items:center;
+}
+.tags span{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    padding:10px 18px;
+    border-radius:25px;
+    background:#efe9ff;
+    color:#6d4cff;
+    font-weight:600;
+    font-size:14px;
+}
+.remove-tag{
+    background:none;
+    border:none;
+    color:#6d4cff;
+    cursor:pointer;
+    font-size:16px;
+    font-weight:bold;
+    transition:.3s;
+    line-height:1;
+    padding:0;
+}
+.remove-tag:hover{
+    color:red;
+}
+.add-btn{
+    background:transparent;
+    border:2px dashed #6d4cff;
+    color:#6d4cff;
+    padding:8px 16px;
+    border-radius:20px;
+    cursor:pointer;
+    transition:.3s;
+    font-size:14px;
+    font-weight:600;
+}
+.add-btn:hover{
+    background:#6d4cff;
+    color:#fff;
+}
+/* Buttons */
+.buttons{
+    margin-top:35px;
+    display:flex;
+    justify-content:flex-end;
+    gap:15px;
+}
+.reset-btn{
+    background:white;
+    border:1px solid #d7dce5;
+    border-radius:10px;
+    padding:13px 28px;
+    font-size:15px;
+    cursor:pointer;
+    font-weight:600;
+}
+.reset-btn:hover{
+    background:#f2f2f2;
+}
+.save-btn{
+    background:#6d4cff;
+    color:white;
+    border:none;
+    border-radius:10px;
+    padding:13px 28px;
+    font-size:15px;
+    font-weight:600;
+    cursor:pointer;
+}
+.save-btn:hover{
+    background:#5938f5;
+}
+.content-wrapper{
+    max-width:1100px;
+    margin:auto;
+    padding:0 30px;
+}
+/* Responsive */
+@media(max-width:992px){
+    .dashboard-content{ margin-left:90px; }
+    .row{ grid-template-columns:1fr; }
+}
+@media(max-width:768px){
+    .dashboard-content{ margin-left:0; }
+    .main{ padding:20px; margin:20px auto; }
+    .header{ display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:35px; }
+    .buttons{ flex-direction:column; }
+    .buttons button{ width:100%; }
+}

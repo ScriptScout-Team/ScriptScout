@@ -1,0 +1,23 @@
+.layout{
+    display:flex;
+    min-height:100vh;
+    background:#f5f7fb;
+}
+
+.main-content{
+    flex:1;
+    margin-left:267px;   /* same width as sidebar */
+    display:flex;
+    flex-direction:column;
+}
+
+.page-content{
+    
+    padding:30px;
+}
+.dashboard-content {
+    margin-left: 260px;
+    height: 100vh;
+    overflow-y: auto;
+    overflow-x: hidden;
+}

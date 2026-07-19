@@ -1,43 +1,228 @@
-<div class="upload-container">
+<div class="upload-page">
 
-  <h1>Upload Video</h1>
+    <!-- Page Header -->
 
-  <div class="form-group">
-    <label>Video Title</label>
-    <input type="text" [(ngModel)]="title">
-  </div>
+    <div class="page-header">
 
-  <div class="form-group">
-    <label>Category</label>
+        <div>
+            <h2>Upload New Video</h2>
+            <p>Upload a production video and generate AI metadata.</p>
+        </div>
 
-    <select [(ngModel)]="category">
-      <option value="">Select Category</option>
-      <option>Education</option>
-      <option>Entertainment</option>
-      <option>Technology</option>
-      <option>Sports</option>
-      <option>News</option>
-    </select>
-  </div>
+    </div>
 
-  <div class="form-group">
-    <label>Description</label>
+    <!-- Upload Card -->
 
-    <textarea rows="5"
-      [(ngModel)]="description">
-    </textarea>
-  </div>
+    <div class="upload-card">
 
-  <div class="form-group">
-    <label>Select Video</label>
+        <!-- Upload Area -->
 
-    <input
-      type="file"
-      (change)="onFileSelected($event)">
-  </div>
+        <div
+            class="upload-box"
+            (dragover)="onDragOver($event)"
+            (drop)="onDrop($event)"
+        >
 
-  <button (click)="uploadVideo()">
-      Upload Video
-  </button>
+            <input
+                #fileInput
+                type="file"
+                hidden
+                accept="video/*"
+                (change)="onFileSelected($event)"
+            >
+             <div class="upload-icon">
+
+    <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="48"
+        height="48"
+        fill="none"
+        viewBox="0 0 24 24">
+
+        <path
+            d="M12 16V5"
+
+            stroke="#6C4BFF"
+
+            stroke-width="2"
+
+            stroke-linecap="round"
+
+            stroke-linejoin="round"/>
+
+        <path
+            d="M8 9l4-4 4 4"
+
+            stroke="#6C4BFF"
+
+            stroke-width="2"
+
+            stroke-linecap="round"
+
+            stroke-linejoin="round"/>
+
+        <path
+            d="M20 16.5A4.5 4.5 0 0015.5 12H15A6 6 0 103 15.5"
+
+            stroke="#6C4BFF"
+
+            stroke-width="2"
+
+            stroke-linecap="round"
+
+            stroke-linejoin="round"/>
+
+    </svg>
+
+</div>
+            
+
+            <h3>Drag & Drop your video here</h3>
+
+            <p>or</p>
+
+            <button
+                type="button"
+                class="browse-btn"
+                (click)="fileInput.click()">
+
+                Browse Files
+
+            </button>
+
+            <span class="supported">
+
+                Supports MP4, MOV, AVI, MKV (Max 10GB)
+
+            </span>
+
+        </div>
+
+        <!-- Selected File -->
+
+        <div
+            class="selected-file"
+            *ngIf="selectedFile">
+
+            <div>
+
+                <strong>{{selectedFile.name}}</strong>
+
+                <small>
+
+                    {{ (selectedFile.size / 1024 / 1024).toFixed(2) }}
+
+                    MB
+
+                </small>
+
+            </div>
+
+            <button
+                class="remove-btn"
+                (click)="removeFile()">
+
+                ✕
+
+            </button>
+
+        </div>
+
+        <!-- Video Details -->
+
+        <div class="section-title">
+
+            Video Details
+
+        </div>
+
+        <div class="form-grid">
+
+            <div class="form-group">
+
+                <label>Title</label>
+
+                <input
+                    type="text"
+                    placeholder="Enter video title"
+                    [(ngModel)]="video.title">
+
+            </div>
+
+            <div class="form-group">
+
+                <label>Category</label>
+
+                <select [(ngModel)]="video.category">
+
+                    <option>Technology</option>
+
+                    <option>Education</option>
+
+                    <option>Healthcare</option>
+
+                    <option>Entertainment</option>
+
+                </select>
+
+            </div>
+
+            <div class="form-group">
+
+                <label>Language</label>
+
+                <select [(ngModel)]="video.language">
+
+                    <option>English</option>
+
+                    <option>Telugu</option>
+
+                    <option>Hindi</option>
+
+                </select>
+
+            </div>
+
+            <div class="form-group full">
+
+                <label>Description</label>
+
+                <textarea
+
+                    rows="5"
+
+                    placeholder="Enter a short description"
+
+                    [(ngModel)]="video.description">
+
+                </textarea>
+
+            </div>
+
+        </div>
+
+        <!-- Buttons -->
+
+        <div class="actions">
+
+            <button
+                class="reset-btn"
+                (click)="resetForm()">
+
+                Reset
+
+            </button>
+
+            <button
+                class="upload-btn"
+                (click)="uploadVideo()">
+
+                Upload Video
+
+            </button>
+
+        </div>
+
+    </div>
 
 </div>

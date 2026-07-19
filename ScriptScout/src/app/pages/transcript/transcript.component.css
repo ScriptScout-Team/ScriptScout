@@ -1,0 +1,110 @@
+.transcript-page{
+    padding:30px;
+    background:#f5f7fb;
+    min-height:100vh;
+}
+
+.page-header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:25px;
+}
+
+.back-btn{
+    background:none;
+    border:none;
+    color:#6f4cff;
+    cursor:pointer;
+    font-size:15px;
+    margin-bottom:8px;
+}
+
+.page-header h2{
+    font-size:28px;
+    color:#222;
+}
+
+.download-btn{
+    padding:10px 22px;
+    border:2px solid #6f4cff;
+    background:white;
+    color:#6f4cff;
+    border-radius:10px;
+    cursor:pointer;
+    font-weight:600;
+}
+
+.download-btn:hover{
+    background:#6f4cff;
+    color:white;
+}
+
+.content-card{
+    background:white;
+    border-radius:15px;
+    padding:25px;
+    box-shadow:0 10px 25px rgba(0,0,0,.08);
+}
+
+.tabs{
+    display:flex;
+    gap:20px;
+    border-bottom:1px solid #ddd;
+    margin-bottom:20px;
+}
+
+.tab{
+    border:none;
+    background:none;
+    padding:15px 0;
+    cursor:pointer;
+    font-weight:600;
+}
+
+.tab.active{
+    color:#6f4cff;
+    border-bottom:3px solid #6f4cff;
+}
+
+.search-box{
+    margin-bottom:20px;
+}
+
+.search-box input{
+    width:100%;
+    padding:12px;
+    border-radius:8px;
+    border:1px solid #ccc;
+}
+
+.transcript-list{
+    max-height:600px;
+    overflow:auto;
+}
+
+.row{
+    display:grid;
+    grid-template-columns:100px 150px 1fr;
+    gap:20px;
+    padding:18px 0;
+    border-bottom:1px solid #eee;
+}
+
+.row:hover{
+    background:#faf8ff;
+}
+
+.time{
+    color:#6f4cff;
+    font-weight:bold;
+}
+
+.speaker{
+    font-weight:600;
+}
+
+.text{
+    color:#555;
+    line-height:1.7;
+}

@@ -1,0 +1,108 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+.welcome-container{
+
+    width:100%;
+    height:100vh;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    background:#f4f6f9;
+
+}
+
+.welcome-card{
+
+    width:420px;
+
+    background:white;
+
+    padding:40px;
+
+    border-radius:12px;
+
+    text-align:center;
+
+    box-shadow:0 0 15px rgba(0,0,0,.15);
+
+}
+
+.logo{
+
+    width:100px;
+
+    margin-bottom:20px;
+
+}
+
+h1{
+
+    color:#0066cc;
+
+    margin-bottom:10px;
+
+}
+
+.subtitle{
+
+    color:#555;
+
+    margin-bottom:35px;
+
+    line-height:1.5;
+
+}
+
+button{
+
+    width:100%;
+
+    padding:12px;
+
+    margin-top:15px;
+
+    border:none;
+
+    border-radius:6px;
+
+    font-size:16px;
+
+    cursor:pointer;
+
+}
+
+.login-btn{
+
+    background:#0066cc;
+
+    color:white;
+
+}
+
+.signup-btn{
+
+    background:#28a745;
+
+    color:white;
+
+}
+
+.login-btn:hover{
+
+    background:#004f9e;
+
+}
+
+.signup-btn:hover{
+
+    background:#218838;
+
+}

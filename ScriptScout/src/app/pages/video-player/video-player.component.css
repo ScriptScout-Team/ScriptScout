@@ -1,0 +1,818 @@
+/* ===================================================
+   PAGE
+=================================================== */
+
+.video-player-page{
+    padding:50px;
+    background:#f5f7fb;
+    min-height:100vh;
+}
+
+/* ===================================================
+   HEADER
+=================================================== */
+
+.player-header{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    margin-bottom:30px;
+
+    gap:20px;
+
+}
+
+.header-left{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:25px;
+
+}
+
+.back-btn{
+
+    border:none;
+
+    background:white;
+
+    color:#6d28d9;
+
+    padding:12px 18px;
+
+    border-radius:12px;
+
+    font-weight:600;
+
+    cursor:pointer;
+
+    transition:.3s;
+
+    box-shadow:0 3px 10px rgba(0,0,0,.06);
+
+}
+
+.back-btn:hover{
+
+    background:#6d28d9;
+
+    color:white;
+
+}
+
+.video-info h2{
+
+    margin:0;
+
+    font-size:30px;
+
+    font-weight:700;
+
+    color:#1f2937;
+
+}
+
+.video-meta{
+
+    margin-top:8px;
+
+    display:flex;
+
+    gap:12px;
+
+    color:#6b7280;
+
+    font-size:14px;
+
+}
+
+.edit-btn{
+
+    background:#6d28d9;
+
+    color:white;
+
+    border:none;
+
+    padding:13px 24px;
+
+    border-radius:12px;
+
+    cursor:pointer;
+
+    font-weight:600;
+
+    transition:.3s;
+
+}
+
+.edit-btn:hover{
+
+    background:#5b21b6;
+
+}
+
+/* ===================================================
+   MAIN GRID
+=================================================== */
+
+.player-layout{
+
+    display:grid;
+
+    grid-template-columns:2fr 1fr;
+
+    gap:28px;
+
+    align-items:start;
+
+}
+
+.left-column{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:24px;
+
+}
+
+.right-column{
+
+    display:flex;
+
+    flex-direction:column;
+
+}
+
+/* ===================================================
+   VIDEO CARD
+=================================================== */
+
+.video-card{
+
+    background:white;
+
+    border-radius:20px;
+
+    padding:20px;
+
+    box-shadow:0 8px 25px rgba(0,0,0,.08);
+
+}
+
+.video-card video{
+
+    width:100%;
+
+    display:block;
+
+    border-radius:15px;
+
+    background:black;
+
+}
+
+/* ===================================================
+   VIDEO STATS
+=================================================== */
+
+.video-stats{
+
+    display:grid;
+
+    grid-template-columns:repeat(4,1fr);
+
+    gap:18px;
+
+}
+
+.stat-card{
+
+    background:white;
+
+    border-radius:16px;
+
+    padding:22px;
+
+    text-align:center;
+
+    box-shadow:0 5px 18px rgba(0,0,0,.08);
+
+    transition:.3s;
+
+}
+
+.stat-card:hover{
+
+    transform:translateY(-5px);
+
+}
+
+.stat-card h3{
+
+    margin:0;
+
+    color:#6b7280;
+
+    font-size:14px;
+
+    font-weight:600;
+
+}
+
+.stat-card p{
+
+    margin-top:10px;
+
+    color:#111827;
+
+    font-size:24px;
+
+    font-weight:700;
+
+}
+/* ===================================================
+   TIMELINE CARD
+=================================================== */
+
+.timeline-card{
+
+    background:white;
+
+    border-radius:20px;
+
+    padding:25px;
+
+    box-shadow:0 8px 25px rgba(0,0,0,.08);
+
+}
+
+.timeline-header{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    margin-bottom:25px;
+
+}
+
+.timeline-header h3{
+
+    margin:0;
+
+    color:#1f2937;
+
+    font-size:20px;
+
+    font-weight:700;
+
+}
+
+.timeline-header span{
+
+    color:#6b7280;
+
+    font-size:14px;
+
+    font-weight:600;
+
+}
+
+.timeline-wrapper{
+
+    padding:15px 0;
+
+}
+
+.timeline-line{
+
+    position:relative;
+
+    width:100%;
+
+    height:8px;
+
+    background:#e5e7eb;
+
+    border-radius:999px;
+
+}
+
+.marker{
+
+    position:absolute;
+
+    top:50%;
+
+    transform:translate(-50%,-50%);
+
+    width:18px;
+
+    height:18px;
+
+    border-radius:50%;
+
+    background:#6d28d9;
+
+    border:3px solid white;
+
+    box-shadow:0 3px 10px rgba(109,40,217,.35);
+
+    cursor:pointer;
+
+    transition:.25s;
+
+}
+
+.marker:hover{
+
+    transform:translate(-50%,-50%) scale(1.25);
+
+}
+
+/* ===================================================
+   SIDEBAR
+=================================================== */
+
+.sidebar-card{
+
+    background:white;
+
+    border-radius:20px;
+
+    overflow:hidden;
+
+    box-shadow:0 8px 25px rgba(0,0,0,.08);
+
+}
+
+/* ===================================================
+   TABS
+=================================================== */
+
+.tab-header{
+
+    display:grid;
+
+    grid-template-columns:1fr 1fr;
+
+    border-bottom:1px solid #ececec;
+
+}
+
+.tab-header button{
+
+    border:none;
+
+    background:white;
+
+    padding:18px;
+
+    font-size:15px;
+
+    font-weight:600;
+
+    cursor:pointer;
+
+    transition:.3s;
+
+}
+
+.tab-header button:hover{
+
+    background:#f8f5ff;
+
+}
+
+.tab-header button.active{
+
+    background:#6d28d9;
+
+    color:white;
+
+}
+
+/* ===================================================
+   CHAPTER LIST
+=================================================== */
+
+.chapter-list{
+
+    max-height:650px;
+
+    overflow-y:auto;
+
+}
+
+.chapter{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:18px;
+
+    padding:20px;
+
+    border-bottom:1px solid #f1f1f1;
+
+    cursor:pointer;
+
+    transition:.25s;
+
+}
+
+.chapter:hover{
+
+    background:#f8f5ff;
+
+}
+
+.chapter-time{
+
+    min-width:70px;
+
+    color:#6d28d9;
+
+    font-weight:700;
+
+    font-size:14px;
+
+}
+
+.chapter-details{
+
+    flex:1;
+
+}
+
+.chapter-details h4{
+
+    margin:0;
+
+    color:#111827;
+
+    font-size:16px;
+
+}
+
+.chapter-details p{
+
+    margin-top:6px;
+
+    color:#6b7280;
+
+    font-size:13px;
+
+}
+
+.chapter-arrow{
+
+    color:#6d28d9;
+
+    font-size:18px;
+
+    font-weight:bold;
+
+}
+
+.view-more{
+
+    padding:20px;
+
+    text-align:center;
+
+    border-top:1px solid #ececec;
+
+}
+
+.view-btn{
+
+    background:#6d28d9;
+
+    color:white;
+
+    border:none;
+
+    padding:12px 20px;
+
+    border-radius:10px;
+
+    cursor:pointer;
+
+    font-weight:600;
+
+    transition:.3s;
+
+}
+
+.view-btn:hover{
+
+    background:#5b21b6;
+
+}
+/* ===================================================
+   TRANSCRIPT
+=================================================== */
+
+.transcript-list{
+
+    max-height:650px;
+
+    overflow-y:auto;
+
+}
+
+.transcript-row{
+
+    display:flex;
+
+    gap:18px;
+
+    padding:18px 20px;
+
+    border-bottom:1px solid #f1f1f1;
+
+    transition:.25s;
+
+}
+
+.transcript-row:hover{
+
+    background:#f8f5ff;
+
+}
+
+.transcript-time{
+
+    min-width:70px;
+
+    color:#6d28d9;
+
+    font-weight:700;
+
+    font-size:14px;
+
+}
+
+.transcript-text{
+
+    color:#4b5563;
+
+    line-height:1.7;
+
+    font-size:14px;
+
+}
+/* ===================================================
+   SMOOTH ANIMATIONS
+=================================================== */
+
+.player-header,
+.video-card,
+.timeline-card,
+.sidebar-card,
+.stat-card{
+
+    animation:fadeUp .5s ease;
+
+}
+
+@keyframes fadeUp{
+
+    from{
+
+        opacity:0;
+
+        transform:translateY(20px);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:translateY(0);
+
+    }
+
+}
+
+/* ===================================================
+   CUSTOM SCROLLBAR
+=================================================== */
+
+.chapter-list::-webkit-scrollbar,
+.transcript-list::-webkit-scrollbar{
+
+    width:8px;
+
+}
+
+.chapter-list::-webkit-scrollbar-track,
+.transcript-list::-webkit-scrollbar-track{
+
+    background:#f3f4f6;
+
+    border-radius:20px;
+
+}
+
+.chapter-list::-webkit-scrollbar-thumb,
+.transcript-list::-webkit-scrollbar-thumb{
+
+    background:#6d28d9;
+
+    border-radius:20px;
+
+}
+
+.chapter-list::-webkit-scrollbar-thumb:hover,
+.transcript-list::-webkit-scrollbar-thumb:hover{
+
+    background:#5b21b6;
+
+}
+
+/* ===================================================
+   CARD HOVER EFFECTS
+=================================================== */
+
+.video-card,
+.timeline-card,
+.sidebar-card{
+
+    transition:.3s;
+
+}
+
+.video-card:hover,
+.timeline-card:hover,
+.sidebar-card:hover{
+
+    transform:translateY(-4px);
+
+    box-shadow:0 15px 35px rgba(0,0,0,.12);
+
+}
+
+/* ===================================================
+   BUTTON EFFECTS
+=================================================== */
+
+button{
+
+    transition:.25s ease;
+
+}
+
+button:active{
+
+    transform:scale(.96);
+
+}
+
+/* ===================================================
+   VIDEO
+=================================================== */
+
+video{
+
+    aspect-ratio:16/9;
+
+    object-fit:cover;
+
+}
+
+/* ===================================================
+   RESPONSIVE
+=================================================== */
+
+@media(max-width:1200px){
+
+.video-stats{
+
+grid-template-columns:repeat(2,1fr);
+
+}
+
+}
+
+@media(max-width:992px){
+
+.player-layout{
+
+grid-template-columns:1fr;
+
+}
+
+.right-column{
+
+margin-top:20px;
+
+}
+
+.player-header{
+
+flex-direction:column;
+
+align-items:flex-start;
+
+}
+
+.header-left{
+
+flex-direction:column;
+
+align-items:flex-start;
+
+gap:15px;
+
+}
+
+}
+
+@media(max-width:768px){
+
+.video-stats{
+
+grid-template-columns:1fr;
+
+}
+
+.player-header h2{
+
+font-size:24px;
+
+}
+
+.tab-header{
+
+grid-template-columns:1fr;
+
+}
+
+.chapter{
+
+flex-direction:column;
+
+align-items:flex-start;
+
+gap:10px;
+
+}
+
+.transcript-row{
+
+flex-direction:column;
+
+gap:10px;
+
+}
+
+.edit-btn{
+
+width:100%;
+
+}
+
+}
+
+@media(max-width:480px){
+
+.video-player-page{
+
+padding:15px;
+
+}
+
+.video-card{
+
+padding:12px;
+
+}
+
+.timeline-card{
+
+padding:18px;
+
+}
+
+.sidebar-card{
+
+border-radius:15px;
+
+}
+
+}

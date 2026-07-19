@@ -1,0 +1,248 @@
+<div class="processing-page">
+
+    <div class="page-header">
+
+        <h2>Processing Queue</h2>
+
+        <button class="refresh-btn"
+        (click)="refreshQueue()">
+
+            Refresh
+
+        </button>
+
+    </div>
+   <div class="stats">
+
+    <div class="stat">
+
+        <h2>12</h2>
+
+        <p>Uploading</p>
+
+    </div>
+
+    <div class="stat">
+
+        <h2>84</h2>
+
+        <p>Completed</p>
+
+    </div>
+
+    <div class="stat">
+
+        <h2>3</h2>
+
+        <p>Failed</p>
+
+    </div>
+
+    <div class="stat">
+
+        <h2>2m 30s</h2>
+
+        <p>Average Time</p>
+
+    </div>
+
+</div>
+    <div class="queue-card">
+
+        <table>
+
+            <thead>
+
+                <tr>
+
+                    <th>Video</th>
+
+                    <th>Status</th>
+
+                    <th>Progress</th>
+
+                    <th>Started</th>
+
+                    <th>Actions</th>
+
+                </tr>
+
+            </thead>
+
+            <tbody>
+
+                <tr *ngFor="let video of processingVideos">
+
+                    <td>
+
+                        {{video.title}}
+
+                    </td>
+
+                    <td>
+
+                        <span
+                        class="status"
+                        [ngClass]="{
+
+                        processing:video.status==='Processing',
+
+                        completed:video.status==='Completed',
+
+                        failed:video.status==='Failed'
+
+                        }">
+
+                        {{video.status}}
+
+                        </span>
+
+                    </td>
+
+                    <td>
+
+                        <div class="progress-bar">
+
+                            <div
+                            class="progress-fill"
+                            [style.width.%]="video.progress">
+
+                            </div>
+
+                        </div>
+
+                        {{video.progress}}%
+
+                    </td>
+
+                    <td>
+
+                        {{video.started}}
+
+                    </td>
+
+                   <td>
+
+    <!-- Processing -->
+
+    <button
+        *ngIf="video.status==='Processing'"
+        class="view-btn">
+
+        View
+
+    </button>
+
+    <button
+        *ngIf="video.status==='Processing'"
+        class="cancel-btn">
+
+        Cancel
+
+    </button>
+
+    <!-- Completed -->
+
+    <button
+        *ngIf="video.status==='Completed'"
+        class="open-btn"
+        [routerLink]="['/video-player', video.id]">
+
+        Open
+
+    </button>
+
+    <button
+        *ngIf="video.status==='Completed'"
+        class="transcript-btn"
+        [routerLink]="['/transcript', video.id]">
+
+        Transcript
+
+    </button>
+
+    <!-- Failed -->
+
+    <button
+        *ngIf="video.status==='Failed'"
+        class="retry-btn"
+        (click)="retry(video.id)">
+
+        Retry
+
+    </button>
+
+    <button
+        *ngIf="video.status==='Failed'"
+        class="delete-btn">
+
+        Delete
+
+    </button>
+
+</td>
+
+                </tr>
+
+            </tbody>
+
+        </table>
+
+    </div>
+    <div class="workflow-card">
+
+    <h3>How It Works</h3>
+
+    <div class="workflow">
+
+        <div class="step">
+
+            <div class="icon">📤</div>
+
+            <h4>Upload Video</h4>
+
+            <p>Upload MP4, AVI or MOV files.</p>
+
+        </div>
+
+        <div class="arrow">→</div>
+
+        <div class="step">
+
+            <div class="icon">📝</div>
+
+            <h4>Transcript</h4>
+
+            <p>AI converts speech into text.</p>
+
+        </div>
+
+        <div class="arrow">→</div>
+
+        <div class="step">
+
+            <div class="icon">🤖</div>
+
+            <h4>AI Processing</h4>
+
+            <p>Generate metadata and chapters.</p>
+
+        </div>
+
+        <div class="arrow">→</div>
+
+        <div class="step">
+
+            <div class="icon">📚</div>
+
+            <h4>Indexing</h4>
+
+            <p>Ready for search and catalog.</p>
+
+        </div>
+
+    </div>
+
+</div>
+
+</div>

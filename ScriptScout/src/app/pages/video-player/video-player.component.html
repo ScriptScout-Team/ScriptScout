@@ -1,0 +1,173 @@
+<div class="video-player-page" >
+  <!-- ================= HEADER ================= -->
+
+  <div class="player-header">
+    <div class="header-left">
+      <button class="back-btn" routerLink="/media-library">
+        ← Back to Library
+      </button>
+
+      <div class="video-info">
+        <h2>{{ video.title }}</h2>
+
+        <div class="video-meta">
+          <span>{{ video.category }}</span>
+
+          <span>•</span>
+
+          <span>{{ video.uploadDate }}</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="header-right">
+      <button class="edit-btn" routerLink="/metadata-editor/1">
+        ✏ Edit Metadata
+      </button>
+    </div>
+  </div>
+
+  <!-- ================= MAIN GRID ================= -->
+
+  <div class="player-layout">
+    <!-- ================= LEFT COLUMN ================= -->
+
+    <div class="left-column">
+      <div class="video-card">
+        <video #videoPlayer controls>
+          <source [src]="video.videoUrl" type="video/mp4" />
+        </video>
+      </div>
+
+      <!-- Video Statistics -->
+
+      <div class="video-stats">
+        <div class="stat-card">
+          <h3>Duration</h3>
+
+          <p>20:31</p>
+        </div>
+
+        <div class="stat-card">
+          <h3>Language</h3>
+
+          <p>English</p>
+        </div>
+
+        <div class="stat-card">
+          <h3>Quality</h3>
+
+          <p>1080P</p>
+        </div>
+
+        <div class="stat-card">
+          <h3>AI Score</h3>
+
+          <p>98%</p>
+        </div>
+      </div>
+      <!-- ================= TIMELINE ================= -->
+
+      <div class="timeline-card">
+        <div class="timeline-header">
+          <h3>Chapter Timeline</h3>
+
+          <span>{{ chapters.length }} Chapters</span>
+        </div>
+
+        <div class="timeline-wrapper">
+          <div class="timeline-line">
+            <div
+              class="marker"
+              *ngFor="let chapter of chapters"
+              [style.left]="chapter.position"
+              (click)="seek(chapter.seconds)"
+            ></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ================= RIGHT COLUMN ================= -->
+
+    <div class="right-column">
+      <div class="sidebar-card">
+        <div class="tab-header">
+          <button
+            [class.active]="selectedTab === 'chapters'"
+            (click)="selectTab('chapters')"
+          >
+            Chapters
+        </button>
+          <button
+            [class.active]="selectedTab === 'transcript'"
+            (click)="selectTab('transcript')"
+          >
+            Transcript
+          </button>
+         
+        </div>
+
+        <!-- ================= CHAPTERS ================= -->
+
+        <div class="chapter-list" *ngIf="selectedTab === 'chapters'">
+          <div
+            class="chapter"
+            *ngFor="let chapter of chapters"
+            (click)="seek(chapter.seconds)"
+          >
+            <div class="chapter-time">
+              {{ chapter.time }}
+            </div>
+
+            <div class="chapter-details">
+              <h4>{{ chapter.title }}</h4>
+
+              <p>Click to jump to this chapter</p>
+            </div>
+
+            <div class="chapter-arrow">▶</div>
+          </div>
+            <div class="view-more">
+
+    <button
+      class="view-btn"
+      [routerLink]="['/chapter-breakdown', video.id]">
+
+      View Full Chapter Breakdown →
+
+    </button>
+
+  </div>
+
+        </div>
+
+        <!-- ================= TRANSCRIPT ================= -->
+
+        <div class="transcript-list" *ngIf="selectedTab === 'transcript'">
+          <div class="transcript-row" *ngFor="let item of transcript">
+            <div class="transcript-time">
+              {{ item.time }}
+            </div>
+
+            <div class="transcript-text">
+              {{ item.text }}
+            </div>
+          </div>
+
+  <div class="view-more">
+
+    <button
+      class="view-btn"
+      [routerLink]="['/transcript', video.id]">
+
+      View Full Transcript →
+
+    </button>
+
+  </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

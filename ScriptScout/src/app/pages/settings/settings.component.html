@@ -1,0 +1,238 @@
+<app-sidebar></app-sidebar>
+
+<div class="dashboard-content">
+
+    <app-navbar></app-navbar>
+
+    <div class="main">
+
+        <!-- Header -->
+
+        <div class="header">
+
+            <div>
+
+                <h2>Settings</h2>
+
+                <p>
+                    Customize your ScriptScout workspace and application preferences.
+                </p>
+
+            </div>
+
+        </div>
+
+        <!-- Settings Card -->
+
+        <div class="settings-card">
+
+            <!-- General Settings -->
+
+            <div class="section">
+
+                <h3>General Settings</h3>
+
+                <div class="row">
+
+                    <div class="form-group">
+
+                        <label>Workspace Name</label>
+
+                        <input
+                            type="text"
+                            [(ngModel)]="settings.workspaceName">
+
+                    </div>
+
+                    <div class="form-group">
+
+                        <label>Language</label>
+
+                        <select [(ngModel)]="settings.language">
+
+                            <option>English</option>
+                            <option>Telugu</option>
+                            <option>Hindi</option>
+
+                        </select>
+
+                    </div>
+
+                </div>
+
+                <div class="row">
+
+                    <div class="form-group">
+
+                        <label>Theme</label>
+
+                        <select [(ngModel)]="settings.theme">
+
+                            <option>Light</option>
+                            <option>Dark</option>
+
+                        </select>
+
+                    </div>
+
+                    <div class="form-group">
+
+                        <label>Timezone</label>
+
+                        <select [(ngModel)]="settings.timezone">
+
+                            <option>Asia/Kolkata</option>
+                            <option>UTC</option>
+                            <option>America/New_York</option>
+
+                        </select>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!-- Notifications -->
+
+            <div class="section">
+
+                <h3>Notifications</h3>
+
+                <div class="checkbox-group">
+
+                    <label>
+
+                        <input
+                            type="checkbox"
+                            [(ngModel)]="settings.emailNotifications">
+
+                        Email Notifications
+
+                    </label>
+
+                    <label>
+
+                        <input
+                            type="checkbox"
+                            [(ngModel)]="settings.processingAlerts">
+
+                        Video Processing Alerts
+
+                    </label>
+
+                    <label>
+
+                        <input
+                            type="checkbox"
+                            [(ngModel)]="settings.weeklyReports">
+
+                        Weekly Reports
+
+                    </label>
+
+                </div>
+
+            </div>
+
+            <!-- AI Processing -->
+
+            <div class="section">
+
+                <h3>AI Processing</h3>
+
+                <div class="checkbox-group">
+
+                    <label>
+
+                        <input
+                            type="checkbox"
+                            [(ngModel)]="settings.autoTranscript">
+
+                        Auto Generate Transcript
+
+                    </label>
+
+                    <label>
+
+                        <input
+                            type="checkbox"
+                            [(ngModel)]="settings.autoMetadata">
+
+                        Auto Generate Metadata
+
+                    </label>
+
+                    <label>
+
+                        <input
+                            type="checkbox"
+                            [(ngModel)]="settings.autoChapters">
+
+                        Auto Generate Chapters
+
+                    </label>
+
+                </div>
+
+            </div>
+
+            <!-- Security -->
+
+            <div class="section">
+
+                <h3>Security</h3>
+
+                <div class="row">
+
+                    <div class="form-group">
+
+                        <label>Current Password</label>
+
+                        <input
+                            type="password"
+                            [(ngModel)]="settings.currentPassword">
+
+                    </div>
+
+                    <div class="form-group">
+
+                        <label>New Password</label>
+
+                        <input
+                            type="password"
+                            [(ngModel)]="settings.newPassword">
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!-- Buttons -->
+
+            <div class="buttons">
+
+                <button
+                    class="reset-btn"
+                    (click)="resetSettings()">
+
+                    Reset
+
+                </button>
+
+                <button
+                    class="save-btn"
+                    (click)="saveSettings()">
+
+                    Save Settings
+
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
