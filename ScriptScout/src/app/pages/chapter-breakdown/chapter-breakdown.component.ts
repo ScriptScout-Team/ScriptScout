@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-
+import { ActivatedRoute, Router } from '@angular/router';
 @Component({
   selector: 'app-chapter-breakdown',
   templateUrl: './chapter-breakdown.component.html',
@@ -35,8 +35,19 @@ export class ChapterBreakdownComponent {
     }
   ];
 
-  constructor() {}
+  constructor(
+     private route: ActivatedRoute,
+  private router: Router
+  ) {}
+  
+  videoId!: string;
 
+ngOnInit() {
+  this.videoId = this.route.snapshot.paramMap.get('id')!;
+}
+goBackToVideo() {
+  this.router.navigate(['/video-player', this.videoId]);
+}
   generateChapters(): void {
 
     // Backend AI integration will be added later

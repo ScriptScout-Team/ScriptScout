@@ -13,7 +13,7 @@ import { NavbarComponent } from './shared/navbar/navbar.component';
 import { SidebarComponent } from './shared/sidebar/sidebar.component';
 import { FooterComponent } from './shared/footer/footer.component';
 import { FormsModule } from '@angular/forms';
-import { WelcomeComponent } from './pages/welcome/welcome.component';
+
 import { SignupComponent } from './pages/signup/signup.component';
 import { ForgotPasswordComponent } from './pages/forgot-password/forgot-password.component';
 import { ResetPasswordComponent } from './pages/reset-password/reset-password.component';
@@ -40,7 +40,7 @@ import { SearchCatalogComponent } from './pages/search-catalog/search-catalog.co
     NavbarComponent,
     SidebarComponent,
     FooterComponent,
-    WelcomeComponent,
+   
     SignupComponent,
     ForgotPasswordComponent,
     ResetPasswordComponent,
