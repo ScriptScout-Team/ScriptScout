@@ -5,14 +5,14 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.example.scriptscout.service.dashboardService;
+import com.example.scriptscout.service.DashboardService;
 
 @RestController
 @RequestMapping("/api/dashboard")
-public class dashboardController {
+public class DashboardController {
 
     @Autowired
-    private dashboardService dashboardService;
+    private DashboardService dashboardService;
 
     @GetMapping
     public String dashboard() {
