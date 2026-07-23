@@ -1,12 +1,12 @@
-package com.example.scriptscout.Controller;
+package com.example.scriptscout.controller;
 
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import com.example.scriptscout.Service.MetadataEditorService;
 import com.example.scriptscout.models.MetadataEditor;
+import com.example.scriptscout.service.MetadataEditorService;
 
 @RestController
 @RequestMapping("/api/metadataeditor")

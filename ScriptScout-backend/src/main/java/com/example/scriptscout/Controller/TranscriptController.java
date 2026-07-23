@@ -1,12 +1,12 @@
-package com.example.scriptscout.Controller;
+package com.example.scriptscout.controller;
 
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import com.example.scriptscout.Service.TranscriptService;
 import com.example.scriptscout.models.Transcript;
+import com.example.scriptscout.service.TranscriptService;
 
 @RestController
 @RequestMapping("/api/transcript")

@@ -62,6 +62,5 @@ public class MetadataEditor {
 	}
 	public MetadataEditor() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 }

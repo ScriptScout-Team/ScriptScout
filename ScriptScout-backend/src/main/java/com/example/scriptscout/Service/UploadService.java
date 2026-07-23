@@ -1,4 +1,4 @@
-package com.example.scriptscout.Service;
+package com.example.scriptscout.service;
 
 import java.util.List;
 
@@ -10,7 +10,6 @@ import com.example.scriptscout.repository.VideoRepository;
 
 @Service
 public class UploadService {
-
     @Autowired
     private VideoRepository videoRepository;
     public Video uploadVideo(Video video) {

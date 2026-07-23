@@ -1,4 +1,4 @@
-package com.example.scriptscout.Service;
+package com.example.scriptscout.service;
 
 import org.springframework.stereotype.Service;
 

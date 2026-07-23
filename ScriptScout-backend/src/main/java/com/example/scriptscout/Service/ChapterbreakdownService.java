@@ -1,4 +1,4 @@
-package com.example.scriptscout.Service;
+package com.example.scriptscout.service;
 
 import java.util.List;
 
@@ -9,7 +9,7 @@ import com.example.scriptscout.models.Chapterbreakdown;
 import com.example.scriptscout.repository.ChapterbreakdownRepository;
 
 @Service
-public class ChapterbreakdownService {
+public class Chapterbreakdownservice {
 
     @Autowired
     private ChapterbreakdownRepository chapterBreakdownRepository;
