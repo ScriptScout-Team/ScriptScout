@@ -38,6 +38,5 @@ public class Transcript {
 	}
 	public Transcript() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 }

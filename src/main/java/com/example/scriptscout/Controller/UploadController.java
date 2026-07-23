@@ -1,4 +1,4 @@
-package com.example.scriptscout.Controller;
+package com.example.scriptscout.controller;
 
 import java.io.File;
 import java.io.IOException;
@@ -7,8 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.example.scriptscout.Service.UploadService;
 import com.example.scriptscout.models.Video;
+import com.example.scriptscout.service.UploadService;
 
 @RestController
 @RequestMapping("/api/upload")
@@ -17,7 +17,6 @@ public class UploadController {
 
     @Autowired
     private UploadService uploadService;
-
     @PostMapping
     public Video uploadVideo(
             @RequestParam("file") MultipartFile file,

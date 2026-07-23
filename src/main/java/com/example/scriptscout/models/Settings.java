@@ -54,7 +54,6 @@ public class Settings {
 	}
 	public Settings() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
 }

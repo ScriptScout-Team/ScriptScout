@@ -64,7 +64,6 @@ public User(Long id, String name, String email, String password, String phoneno,
 }
 public User() {
 	super();
-	// TODO Auto-generated constructor stub
 }
 }
 

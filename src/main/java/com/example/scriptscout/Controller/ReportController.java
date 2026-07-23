@@ -1,12 +1,12 @@
-package com.example.scriptscout.Controller;
+package com.example.scriptscout.controller;
 
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import com.example.scriptscout.Service.ReportService;
 import com.example.scriptscout.models.Report;
+import com.example.scriptscout.service.ReportService;
 
 @RestController
 @RequestMapping("/api/report")

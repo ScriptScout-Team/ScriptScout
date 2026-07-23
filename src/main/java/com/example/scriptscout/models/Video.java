@@ -54,6 +54,5 @@ public class Video {
 	}
 	public Video() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 }

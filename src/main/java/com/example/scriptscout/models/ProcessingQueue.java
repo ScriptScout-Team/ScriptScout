@@ -64,6 +64,5 @@ public class ProcessingQueue {
 	}
 	public ProcessingQueue() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 }

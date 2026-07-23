@@ -1,10 +1,10 @@
-package com.example.scriptscout.Controller;
+package com.example.scriptscout.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import com.example.scriptscout.Service.UserService;
 import com.example.scriptscout.models.User;
+import com.example.scriptscout.service.UserService;
 
 @RestController
 @RequestMapping("/api/user")
