@@ -5,14 +5,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import com.example.scriptscout.models.Chapterbreakdown;
-import com.example.scriptscout.service.Chapterbreakdownservice;
+import com.example.scriptscout.service.ChapterbreakdownService;
 
 @RestController
 @RequestMapping("/api/chapterbreakdown")
 @CrossOrigin(origins = "*")
-public class Chapterbreakdowncontroller {
+public class ChapterbreakdownController {
 	@Autowired
-	private Chapterbreakdownservice chapterBreakdownService;
+	private ChapterbreakdownService chapterBreakdownService;
 
 	@PostMapping
 	public Chapterbreakdown saveChapter(@RequestBody Chapterbreakdown chapterBreakdown) {

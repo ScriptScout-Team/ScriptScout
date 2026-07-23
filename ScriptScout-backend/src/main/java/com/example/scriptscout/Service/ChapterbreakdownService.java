@@ -9,7 +9,7 @@ import com.example.scriptscout.models.Chapterbreakdown;
 import com.example.scriptscout.repository.ChapterbreakdownRepository;
 
 @Service
-public class Chapterbreakdownservice {
+public class ChapterbreakdownService {
 
     @Autowired
     private ChapterbreakdownRepository chapterBreakdownRepository;
