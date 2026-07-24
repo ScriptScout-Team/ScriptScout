@@ -10,9 +10,17 @@ export class SidebarComponent {
 
   constructor(private router: Router) {}
 
-  logout() {
-    // Later you can also clear tokens/localStorage here.
+   logout(): void {
+  const confirmLogout = confirm('Are you sure you want to logout?');
+
+  if (confirmLogout) {
+    // Clear session or local storage if used
+    localStorage.clear();
+    sessionStorage.clear();
+
+    // Navigate to login page
     this.router.navigate(['/login']);
   }
+}
 
 }
