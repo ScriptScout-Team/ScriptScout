@@ -141,19 +141,14 @@ tbody tr{
 }
 
 .retry-btn{
-
     border:none;
-
     background:#ef4444;
-
     color:white;
-
     padding:8px 15px;
-
     border-radius:8px;
-
     cursor:pointer;
-
+    margin-right:6px;
+    margin-bottom:5px;
 }
 /* ===========================
    Statistics
@@ -322,13 +317,7 @@ tbody tr{
 
 }
 
-.retry-btn{
 
-    background:#ef4444;
-
-    color:white;
-
-}
 
 .delete-btn{
 

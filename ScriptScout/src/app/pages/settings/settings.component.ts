@@ -31,7 +31,7 @@ export class SettingsComponent {
 
   };
 
-  constructor() { }
+  
 
   saveSettings(): void {
 

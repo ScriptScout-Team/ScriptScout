@@ -89,14 +89,12 @@
 }
 
 .logo{
-
-    width:150px;
-    height:150px;
+    width:110px;
+    height:110px;
     object-fit:contain;
     filter:drop-shadow(0 15px 35px rgba(0,0,0,.45));
-
+    animation:logoFloat 5s ease-in-out infinite;
 }
-
 .brand h1{
 
     font-size:56px;
@@ -699,12 +697,7 @@
 
 }
 
-.logo{
 
-    width:110px;
-    height:110px;
-
-}
 
 .brand h1{
 
@@ -1099,11 +1092,7 @@ html{
 
 }
 
-.logo{
 
-    animation:logoFloat 5s ease-in-out infinite;
-
-}
 
 @keyframes logoFloat{
 

@@ -56,7 +56,7 @@ export class SearchCatalogComponent {
 
   filteredVideos = [...this.videos];
 
-  constructor() {}
+ 
 
   searchVideos(): void {
 

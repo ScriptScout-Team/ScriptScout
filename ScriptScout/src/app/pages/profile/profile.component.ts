@@ -23,7 +23,7 @@ export class ProfileComponent {
     autoSave: true
   };
 
-  constructor() {}
+  
 
   saveProfile(): void {
 

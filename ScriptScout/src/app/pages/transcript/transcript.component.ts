@@ -1,6 +1,5 @@
-import { Component } from '@angular/core';
+import { Component,OnInit  } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { OnInit } from '@angular/core';
 interface TranscriptItem {
   time: string;
   speaker: string;

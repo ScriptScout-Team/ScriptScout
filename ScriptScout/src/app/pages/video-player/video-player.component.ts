@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { VideoService } from '../../services/video.service';
-import { Video } from '../../models/video';
+
 
 @Component({
   selector: 'app-video-player',
