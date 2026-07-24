@@ -28,8 +28,16 @@ public class PythonAiService {
     private static final String GENRE = "genre";
     private static final String LANGUAGE = "language";
 
-    private final RestTemplate restTemplate = new RestTemplate();
+    private final RestTemplate restTemplate;
     private final String pythonServiceUrl = "https://1e1a90661b718c.lhr.life/upload";
+
+    public PythonAiService() {
+        this.restTemplate = new RestTemplate();
+    }
+
+    public PythonAiService(RestTemplate restTemplate) {
+        this.restTemplate = restTemplate;
+    }
 
     public static class AiResponse {
         private String transcript;
