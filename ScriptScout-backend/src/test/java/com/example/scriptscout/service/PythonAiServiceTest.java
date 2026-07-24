@@ -3,12 +3,12 @@ package com.example.scriptscout.service;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
-public class PythonAiServiceTest {
+class PythonAiServiceTest {
 
     private final PythonAiService pythonAiService = new PythonAiService();
 
     @Test
-    public void testParseMetadataJson() {
+    void testParseMetadataJson() {
         String jsonMetadata = "{\n" +
                 "  \"summary\": \"A short recording of counting the numbers one, two, and three.\",\n" +
                 "  \"genre\": \"Educational\",\n" +
@@ -25,7 +25,7 @@ public class PythonAiServiceTest {
     }
 
     @Test
-    public void testParseMetadataYaml() {
+    void testParseMetadataYaml() {
         String yamlMetadata = "Summary:\n" +
                 "A video overview of the project.\n" +
                 "\n" +
@@ -47,3 +47,4 @@ public class PythonAiServiceTest {
         assertEquals("English", parsed.getLanguage());
     }
 }
+

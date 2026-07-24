@@ -4,6 +4,8 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.core.io.FileSystemResource;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
@@ -18,6 +20,13 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 @Service
 public class PythonAiService {
+
+    private static final Logger logger = LoggerFactory.getLogger(PythonAiService.class);
+    private static final ObjectMapper MAPPER = new ObjectMapper();
+
+    private static final String SUMMARY = "summary";
+    private static final String GENRE = "genre";
+    private static final String LANGUAGE = "language";
 
     private final RestTemplate restTemplate = new RestTemplate();
     private final String pythonServiceUrl = "https://1e1a90661b718c.lhr.life/upload";
@@ -74,8 +83,7 @@ public class PythonAiService {
         try {
             return restTemplate.postForObject(pythonServiceUrl, requestEntity, AiResponse.class);
         } catch (Exception e) {
-            System.err.println("Error calling Python AI service: " + e.getMessage());
-            e.printStackTrace();
+            logger.error("Error calling Python AI service: {}", e.getMessage(), e);
             return null;
         }
     }
@@ -87,99 +95,150 @@ public class PythonAiService {
         }
 
         String trimmed = metadataStr.trim();
-        if (trimmed.startsWith("{")) {
-            try {
-                ObjectMapper mapper = new ObjectMapper();
-                JsonNode root = mapper.readTree(trimmed);
-                if (root.has("summary")) {
-                    parsed.setSummary(root.get("summary").asText());
-                }
-                if (root.has("genre")) {
-                    parsed.setGenre(root.get("genre").asText());
-                } else if (root.has("category")) {
-                    parsed.setGenre(root.get("category").asText());
-                }
-                if (root.has("tags")) {
-                    JsonNode tagsNode = root.get("tags");
-                    if (tagsNode.isArray()) {
-                        List<String> tagsList = new ArrayList<>();
-                        for (JsonNode t : tagsNode) {
-                            tagsList.add(t.asText());
-                        }
-                        parsed.setTags(String.join(", ", tagsList));
-                    } else {
-                        parsed.setTags(tagsNode.asText());
-                    }
-                }
-                if (root.has("language")) {
-                    parsed.setLanguage(root.get("language").asText());
-                }
-                return parsed;
-            } catch (Exception e) {
-                System.err.println("JSON parse failed, falling back to line parsing: " + e.getMessage());
-            }
+        if (trimmed.startsWith("{") && tryParseJsonMetadata(trimmed, parsed)) {
+            return parsed;
         }
 
-        // Plain text parsing (e.g. "Summary:\n<summary>\n\nGenre:\n<genre>\n\nTags:\n- tag1\n")
+        parseLineMetadata(metadataStr, parsed);
+        return parsed;
+    }
+
+    private boolean tryParseJsonMetadata(String jsonStr, ParsedMetadata parsed) {
         try {
-            String[] lines = metadataStr.split("\n");
-            String currentKey = null;
-            StringBuilder summaryBuilder = new StringBuilder();
-            StringBuilder genreBuilder = new StringBuilder();
+            JsonNode root = MAPPER.readTree(jsonStr);
+            extractJsonFields(root, parsed);
+            return true;
+        } catch (Exception e) {
+            logger.error("JSON parse failed, falling back to line parsing: {}", e.getMessage());
+            return false;
+        }
+    }
+
+    private void extractJsonFields(JsonNode root, ParsedMetadata parsed) {
+        if (root.has(SUMMARY)) {
+            parsed.setSummary(root.get(SUMMARY).asText());
+        }
+        if (root.has(GENRE)) {
+            parsed.setGenre(root.get(GENRE).asText());
+        } else if (root.has("category")) {
+            parsed.setGenre(root.get("category").asText());
+        }
+        if (root.has("tags")) {
+            extractJsonTags(root.get("tags"), parsed);
+        }
+        if (root.has(LANGUAGE)) {
+            parsed.setLanguage(root.get(LANGUAGE).asText());
+        }
+    }
+
+    private void extractJsonTags(JsonNode tagsNode, ParsedMetadata parsed) {
+        if (tagsNode.isArray()) {
             List<String> tagsList = new ArrayList<>();
-            StringBuilder languageBuilder = new StringBuilder();
-
-            for (String line : lines) {
-                String lineTrimmed = line.trim();
-                String lineLower = lineTrimmed.toLowerCase();
-
-                if (lineLower.startsWith("summary:")) {
-                    currentKey = "summary";
-                    String rest = lineTrimmed.substring(8).trim();
-                    if (!rest.isEmpty()) {
-                        summaryBuilder.append(rest);
-                    }
-                } else if (lineLower.startsWith("genre:")) {
-                    currentKey = "genre";
-                    String rest = lineTrimmed.substring(6).trim();
-                    if (!rest.isEmpty()) {
-                        genreBuilder.append(rest);
-                    }
-                } else if (lineLower.startsWith("category:")) {
-                    currentKey = "genre";
-                    String rest = lineTrimmed.substring(9).trim();
-                    if (!rest.isEmpty()) {
-                        genreBuilder.append(rest);
-                    }
-                } else if (lineLower.startsWith("tags:")) {
-                    currentKey = "tags";
-                    String rest = lineTrimmed.substring(5).trim();
-                    if (!rest.isEmpty()) {
-                        tagsList.add(rest);
-                    }
-                } else if (lineLower.startsWith("language:")) {
-                    currentKey = "language";
-                    String rest = lineTrimmed.substring(9).trim();
-                    if (!rest.isEmpty()) {
-                        languageBuilder.append(rest);
-                    }
-                } else if (lineTrimmed.startsWith("-") && "tags".equals(currentKey)) {
-                    tagsList.add(lineTrimmed.substring(1).trim());
-                } else if (!lineTrimmed.isEmpty()) {
-                    // Append to current key's builder
-                    if ("summary".equals(currentKey)) {
-                        if (summaryBuilder.length() > 0) summaryBuilder.append(" ");
-                        summaryBuilder.append(lineTrimmed);
-                    } else if ("genre".equals(currentKey)) {
-                        if (genreBuilder.length() > 0) genreBuilder.append(" ");
-                        genreBuilder.append(lineTrimmed);
-                    } else if ("language".equals(currentKey)) {
-                        if (languageBuilder.length() > 0) languageBuilder.append(" ");
-                        languageBuilder.append(lineTrimmed);
-                    }
-                }
+            for (JsonNode t : tagsNode) {
+                tagsList.add(t.asText());
             }
+            parsed.setTags(String.join(", ", tagsList));
+        } else {
+            parsed.setTags(tagsNode.asText());
+        }
+    }
 
+    private void parseLineMetadata(String metadataStr, ParsedMetadata parsed) {
+        try {
+            LineParseContext context = new LineParseContext();
+            String[] lines = metadataStr.split("\n");
+            for (String line : lines) {
+                processLine(line, context);
+            }
+            context.applyTo(parsed);
+        } catch (Exception e) {
+            logger.error("Line parsing failed: {}", e.getMessage());
+        }
+    }
+
+    private void processLine(String line, LineParseContext context) {
+        String lineTrimmed = line.trim();
+        String lineLower = lineTrimmed.toLowerCase();
+
+        if (checkKeyPrefixes(lineTrimmed, lineLower, context)) {
+            return;
+        }
+
+        if (lineTrimmed.startsWith("-") && "tags".equals(context.currentKey)) {
+            context.tagsList.add(lineTrimmed.substring(1).trim());
+        } else if (!lineTrimmed.isEmpty()) {
+            appendToCurrentKeyBuilder(lineTrimmed, context);
+        }
+    }
+
+    private boolean checkKeyPrefixes(String lineTrimmed, String lineLower, LineParseContext context) {
+        if (lineLower.startsWith("summary:")) {
+            context.currentKey = SUMMARY;
+            appendRestIfNotEmpty(lineTrimmed.substring(8), context.summaryBuilder);
+            return true;
+        }
+        if (lineLower.startsWith("genre:")) {
+            context.currentKey = GENRE;
+            appendRestIfNotEmpty(lineTrimmed.substring(6), context.genreBuilder);
+            return true;
+        }
+        if (lineLower.startsWith("category:")) {
+            context.currentKey = GENRE;
+            appendRestIfNotEmpty(lineTrimmed.substring(9), context.genreBuilder);
+            return true;
+        }
+        if (lineLower.startsWith("tags:")) {
+            context.currentKey = "tags";
+            appendRestIfNotEmptyToList(lineTrimmed.substring(5), context.tagsList);
+            return true;
+        }
+        if (lineLower.startsWith("language:")) {
+            context.currentKey = LANGUAGE;
+            appendRestIfNotEmpty(lineTrimmed.substring(9), context.languageBuilder);
+            return true;
+        }
+        return false;
+    }
+
+    private void appendRestIfNotEmpty(String rest, StringBuilder sb) {
+        String trimmedRest = rest.trim();
+        if (!trimmedRest.isEmpty()) {
+            sb.append(trimmedRest);
+        }
+    }
+
+    private void appendRestIfNotEmptyToList(String rest, List<String> list) {
+        String trimmedRest = rest.trim();
+        if (!trimmedRest.isEmpty()) {
+            list.add(trimmedRest);
+        }
+    }
+
+    private void appendToCurrentKeyBuilder(String lineTrimmed, LineParseContext context) {
+        if (SUMMARY.equals(context.currentKey)) {
+            appendWithSpace(context.summaryBuilder, lineTrimmed);
+        } else if (GENRE.equals(context.currentKey)) {
+            appendWithSpace(context.genreBuilder, lineTrimmed);
+        } else if (LANGUAGE.equals(context.currentKey)) {
+            appendWithSpace(context.languageBuilder, lineTrimmed);
+        }
+    }
+
+    private void appendWithSpace(StringBuilder sb, String text) {
+        if (sb.length() > 0) {
+            sb.append(" ");
+        }
+        sb.append(text);
+    }
+
+    private static class LineParseContext {
+        private String currentKey;
+        private final StringBuilder summaryBuilder = new StringBuilder();
+        private final StringBuilder genreBuilder = new StringBuilder();
+        private final List<String> tagsList = new ArrayList<>();
+        private final StringBuilder languageBuilder = new StringBuilder();
+
+        public void applyTo(ParsedMetadata parsed) {
             if (summaryBuilder.length() > 0) {
                 parsed.setSummary(summaryBuilder.toString());
             }
@@ -192,10 +251,6 @@ public class PythonAiService {
             if (languageBuilder.length() > 0) {
                 parsed.setLanguage(languageBuilder.toString());
             }
-        } catch (Exception e) {
-            System.err.println("Line parsing failed: " + e.getMessage());
         }
-
-        return parsed;
     }
 }
