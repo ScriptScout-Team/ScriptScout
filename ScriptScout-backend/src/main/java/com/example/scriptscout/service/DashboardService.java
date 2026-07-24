@@ -5,8 +5,10 @@ import org.springframework.stereotype.Service;
 @Service
 public class DashboardService {
 
+    private static final String DASHBOARD_MESSAGE = "Welcome to ScriptScout Dashboard";
+
     public String getDashboardMessage() {
-        return "Welcome to ScriptScout Dashboard";
+        return DASHBOARD_MESSAGE;
     }
 
 }
