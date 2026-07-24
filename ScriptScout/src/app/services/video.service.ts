@@ -6,7 +6,7 @@ import { Video } from '../models/video';
 export class VideoService {
   videos: Video[] = JSON.parse(localStorage.getItem('videos') || '[]');
 
-  constructor() {}
+  
   addVideo(video: Video) {
     this.videos.push(video);
 

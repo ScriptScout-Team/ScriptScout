@@ -35,8 +35,15 @@
     <div class="left-column">
       <div class="video-card">
         <video #videoPlayer controls>
-          <source [src]="video.videoUrl" type="video/mp4" />
-        </video>
+    <source [src]="video.videoUrl" type="video/mp4" />
+
+    <track
+        kind="captions"
+        src="assets/captions.vtt"
+        srclang="en"
+        label="English"
+        default>
+</video>
       </div>
 
       <!-- Video Statistics -->

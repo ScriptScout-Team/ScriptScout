@@ -82,38 +82,25 @@
 
 }
 .logout-btn{
-
     width:100%;
-
+    margin-top:15px;
     display:flex;
-
     align-items:center;
-
     gap:14px;
-
     padding:14px 16px;
-
-    background:transparent;
-
-    color:#D8D8FF;
-
     border:none;
-
     border-radius:12px;
-
+    background:transparent;
+    color:#D8D8FF;
     cursor:pointer;
-
     font-size:15px;
-
+    text-align:left;
     transition:.3s;
-
 }
+
 .logout-btn:hover{
-
     background:#EF4444;
-
-    color:white;
-
+    color:#fff;
 }
 
 /* =======================
@@ -210,25 +197,7 @@
     background:rgba(255,255,255,0.12);
 }
 
-.logout-btn{
-    width:100%;
-    margin-top:15px;
-    display:flex;
-    align-items:center;
-    gap:12px;
-    padding:12px 1px;
-    border:none;
-    border-radius:10px;
-    background:transparent;
-    color:white;
-    cursor:pointer;
-    font-size:18px;
-    text-align:left;
-}
 
-.logout-btn:hover{
-    background:rgba(255,255,255,0.12);
-}
 .bottom-menu ul{
     list-style: none !important;
     margin: 0 !important;
