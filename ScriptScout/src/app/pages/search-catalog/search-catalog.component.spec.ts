@@ -1,5 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { FormsModule } from '@angular/forms';
 import { SearchCatalogComponent } from './search-catalog.component';
 
 describe('SearchCatalogComponent', () => {
@@ -8,7 +8,8 @@ describe('SearchCatalogComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [SearchCatalogComponent]
+      declarations: [SearchCatalogComponent],
+      imports: [FormsModule]
     });
     fixture = TestBed.createComponent(SearchCatalogComponent);
     component = fixture.componentInstance;
